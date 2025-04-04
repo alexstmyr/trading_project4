@@ -68,3 +68,16 @@ class Order(BaseModel):
     workingTime: int
     fills: List[OrderFill]
     selfTradePreventionMode: str
+class Trades(BaseModel):
+    symbol: str
+    id: int
+    orderId: int
+    price: str
+    qty: str
+    quoteQty: str
+    comission: str
+    comissionAsset: str
+    time: int
+    isBuyer: bool
+    isMaker: bool
+    bestatch: bool

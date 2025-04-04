@@ -58,4 +58,19 @@ async def create_order(order: OrderRequest):
     """
     Create a Binance order
     """
-    ...
+
+@app.get("/api/binance-health")
+async def binance_health():
+    client.ping()
+    return {}
+
+@app.get("/api/price")
+async def get_price(symbol: str):
+    res = client.get_price(symbol)
+    return {"price": "example"}
+
+
+@app.get("/api/trades")
+async def get_trades(symbol: str):
+    res = client.get_trades(symbol)
+    return {"price": "example"}

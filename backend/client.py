@@ -36,3 +36,23 @@ class BinanceTestClient:
             return requests.get(f"{self.base_url}{endpoint}", params=params, headers=headers)
 
         return requests.post(f"{self.base_url}{endpoint}", params=params, headers=headers)
+
+    # ping for binance (api/v3/ping)
+    def ping(self) -> bool:
+        #res = self._execute_request(endpoint = "/v3/ping", params = {})
+        request.get(self.base_url + "/v3/ping")
+        #print(res.status_code)
+        #print(res.text)
+
+    def get_price(self, symbol: str):
+        # res = self._execute_request(endpoint: "/v3/ticker/price", paramas: {"symbol": symbol})
+        request.get(self.base_url + "/v3/ticker/price?symbol={}".format(symbol))
+        print(res.status_code)
+        print(res.text)
+    
+    def get_trades(self, symbol: str) -> list[Trades]:
+        res = self._execute_request(endpoint= "/v3/myTrades", params= {"symbol": symbol})
+        trades = Trades.parse_obj(res.json())
+        print(res.status_code)
+        print(res.json())
+        return trades
