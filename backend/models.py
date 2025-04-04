@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Union
 
 
 class AssetBalance(BaseModel):
@@ -21,13 +21,13 @@ class PriceInfo(BaseModel):
 
 
 class CandleInfo(BaseModel):
-    open_time: str
+    open_time: Union[str, int]
     open: float
     high: float
     low: float
     close: float
     volume: float
-    close_time: str
+    close_time: Union[str, int]
     quote_asset_volume: float
     number_of_trades: int
     taker_buy_base_asset_volume: float
